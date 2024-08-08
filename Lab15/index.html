@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video and Canvas Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        video, canvas {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Video and Canvas Example</h1>
+
+    <video id="videoElement" width="600" height="300" controls>
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        
+    </video>
+
+
+    <canvas id="canvasElement" width="600" height="300"></canvas>
+
+    <script>
+
+        const video = document.getElementById('videoElement');
+        const canvas = document.getElementById('canvasElement');
+        const ctx = canvas.getContext('2d');
+
+
+        function drawFrame() {
+            ctx.drawImage(video, 0,0,  canvas.width, canvas.height);
+            requestAnimationFrame(drawFrame); 
+        }
+
+        video.addEventListener('play', () => {
+            drawFrame();
+        });
+    </script>
+</body>
+</html>
